@@ -301,6 +301,41 @@ function Dots({total,cur}) {
 }
 
 
+
+const TAGLINES = [
+  "Every great conversation starts with one phrase.",
+  "The words you know change the rooms you walk into.",
+  "Confidence isn't born. It's practiced.",
+  "Five minutes today. A real connection tomorrow.",
+  "Small talk is a big skill.",
+  "The best networkers don't wing it.",
+  "You already speak English. Now own it.",
+  "One phrase at a time.",
+  "Fluency is just familiarity.",
+  "The mine site has enough silence. Break it well.",
+  "Words open doors that titles can't.",
+  "You've done harder things than small talk.",
+  "International visitors remember how you made them feel.",
+  "Be the one they remember from the corridor.",
+  "Natural English is learned, not inherited.",
+  "The right phrase at the right moment is everything.",
+  "Today's phrase is tomorrow's reflex.",
+  "Preparation is the most underrated social skill.",
+  "You don't need a new language. Just new phrases.",
+  "Every executive started with awkward small talk.",
+  "Connection is a skill. Skills can be built.",
+  "The gap between you and them is just vocabulary.",
+  "Five minutes here. One less awkward silence there.",
+  "Your English is better than you think.",
+  "The mine runs 24/7. So does your potential.",
+  "Be ready when the moment comes.",
+  "Great conversationalists were once nervous too.",
+  "Each phrase is a door. Open one today.",
+  "Repetition turns effort into instinct.",
+  "Today you learn it. Next week you live it.",
+];
+const SESSION_TAGLINE = TAGLINES[Math.floor(Math.random() * TAGLINES.length)];
+
 function loadStorage(key, fallback) {
   try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch { return fallback; }
 }
@@ -389,11 +424,11 @@ export default function App() {
 
   return (
     <div style={s.page}>
-      <style>{`* { box-sizing:border-box; margin:0; padding:0; } @keyframes up { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} } .up { animation: up .4s ease both; }`}</style>
+      <style>{`* { box-sizing:border-box; margin:0; padding:0; } @keyframes up { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} } .up { animation: up .4s ease both; } @keyframes ring-fill { to { stroke-dashoffset: 0; } } @keyframes check-draw { to { stroke-dashoffset: 0; } }`}</style>
       <div style={s.wrap}>
 
         {/* HEADER — only on home */}
-        {(phase==="home" || phase==="phrases" || phase==="done") && <div style={{paddingTop:80, paddingBottom:56}}>
+        {phase==="home" && <div style={{paddingTop:80, paddingBottom:56}}>
           <div style={{marginBottom:52}}>
             <div style={{fontSize:11, color:"#444", fontFamily:"monospace"}}>{dateStr}</div>
           </div>
@@ -414,7 +449,7 @@ export default function App() {
               <div style={{position:"absolute", top:-50, right:-50, width:180, height:180, background:"radial-gradient(circle,rgba(37,99,255,.12) 0%,transparent 70%)", pointerEvents:"none"}}/>
               <div style={{marginBottom:18}}><IconSun/></div>
               <h2 style={{fontSize:24, fontWeight:700, color:"#fff", marginBottom:8}}>Daily Boost</h2>
-              <p style={{color:"#555", fontSize:14, lineHeight:1.65, marginBottom:28}}>One social phrase. Three exercises.<br/>Five minutes. Be ready for the next visit.</p>
+              <p style={{color:"#555", fontSize:14, lineHeight:1.65, marginBottom:28}}>{SESSION_TAGLINE}</p>
               <button style={s.btnPrimary} onClick={startLesson}>Start today's lesson →</button>
             </div>
             <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:12}}>
@@ -592,7 +627,16 @@ export default function App() {
         {/* DONE */}
         {phase==="done" && (
           <div className="up" style={{textAlign:"center", paddingTop:40}}>
-            <div style={{fontSize:56, marginBottom:20}}>🎯</div>
+            <div style={{display:"flex", justifyContent:"center", marginBottom:24}}>
+              <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="44" cy="44" r="40" stroke="#1e2a3f" strokeWidth="2"/>
+                <circle cx="44" cy="44" r="40" stroke="#2563FF" strokeWidth="2" strokeDasharray="251" strokeDashoffset="251"
+                  style={{animation:"ring-fill 0.6s ease forwards 0.1s"}}/>
+                <polyline points="26,44 38,56 62,32" fill="none" stroke="#2563FF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+                  strokeDasharray="50" strokeDashoffset="50"
+                  style={{animation:"check-draw 0.4s ease forwards 0.65s"}}/>
+              </svg>
+            </div>
             <h2 style={{fontSize:26, fontWeight:700, color:"#fff", marginBottom:8}}>Lesson complete.</h2>
             <p style={{color:"#444", fontSize:14, marginBottom:10}}>One phrase closer to connecting.</p>
             <div style={{display:"flex", alignItems:"center", justifyContent:"center", gap:8, marginBottom:36}}>
