@@ -359,7 +359,7 @@ export default function App() {
   const [produce, setProduce] = useState("");
   const [feedback, setFeedback] = useState(null);
   const [fbLoading, setFbLoading] = useState(false);
-  const [tagline] = useState(() => TAGLINES[Math.floor(Math.random() * TAGLINES.length)]);
+  const [tagline] = useState(() => TAGLINES[Date.now() % TAGLINES.length]);
 
   // Word drawer
   const [drawerOpen, setDrawerOpen] = useState(false);
