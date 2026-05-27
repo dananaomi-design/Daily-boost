@@ -334,7 +334,7 @@ const TAGLINES = [
   "Repetition turns effort into instinct.",
   "Today you learn it. Next week you live it.",
 ];
-const SESSION_TAGLINE = TAGLINES[Math.floor(Math.random() * TAGLINES.length)];
+
 
 function loadStorage(key, fallback) {
   try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch { return fallback; }
@@ -359,6 +359,7 @@ export default function App() {
   const [produce, setProduce] = useState("");
   const [feedback, setFeedback] = useState(null);
   const [fbLoading, setFbLoading] = useState(false);
+  const [tagline] = useState(() => TAGLINES[Math.floor(Math.random() * TAGLINES.length)]);
 
   // Word drawer
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -449,7 +450,7 @@ export default function App() {
               <div style={{position:"absolute", top:-50, right:-50, width:180, height:180, background:"radial-gradient(circle,rgba(37,99,255,.12) 0%,transparent 70%)", pointerEvents:"none"}}/>
               <div style={{marginBottom:18}}><IconSun/></div>
               <h2 style={{fontSize:24, fontWeight:700, color:"#fff", marginBottom:8}}>Daily Boost</h2>
-              <p style={{color:"#555", fontSize:14, lineHeight:1.65, marginBottom:28}}>{SESSION_TAGLINE}</p>
+              <p style={{color:"#555", fontSize:14, lineHeight:1.65, marginBottom:28}}>{tagline}</p>
               <button style={s.btnPrimary} onClick={startLesson}>Start today's lesson →</button>
             </div>
             <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:12}}>
