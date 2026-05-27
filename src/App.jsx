@@ -363,7 +363,14 @@ export default function App() {
 
   // Word drawer
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const todayPhrase = DAILY_PHRASES[new Date().getDay() % DAILY_PHRASES.length];
+  const [todayPhrase, setTodayPhrase] = useState(() => DAILY_PHRASES[Date.now() % DAILY_PHRASES.length]);
+  const nextPhrase = () => {
+    setTodayPhrase(prev => {
+      const idx = DAILY_PHRASES.indexOf(prev);
+      return DAILY_PHRASES[(idx + 1) % DAILY_PHRASES.length];
+    });
+    setDrawerOpen(false);
+  };
 
   const startLesson = () => {
     const available = LESSONS.filter((_,i) => !completed.includes(i));
@@ -708,7 +715,7 @@ export default function App() {
                     </div>
                   ))}
                 </div>
-                <button onClick={()=>setDrawerOpen(false)} style={{width:"100%",marginTop:24,background:"#2563FF",border:"none",borderRadius:14,padding:"16px 0",color:"#fff",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>Got it</button>
+                <button onClick={nextPhrase} style={{width:"100%",marginTop:24,background:"#2563FF",border:"none",borderRadius:14,padding:"16px 0",color:"#fff",fontSize:16,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>Got it</button>
               </div>
             </div>
           </>
