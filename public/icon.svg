@@ -1,0 +1,29 @@
+<svg width="512" height="512" viewBox="0 0 680 680" role="img" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow" cx="42%" cy="58%" r="60%">
+      <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.5"/>
+      <stop offset="60%" stop-color="#1e3a8a" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="bubble-clip">
+      <path d="M 140 210 Q 140 158 192 158 L 488 158 Q 540 158 540 210 L 540 420 Q 540 472 488 472 L 300 472 L 248 548 L 248 472 L 192 472 Q 140 472 140 420 Z"/>
+    </clipPath>
+  </defs>
+  <rect x="0" y="0" width="680" height="680" rx="148" fill="#0a0a0a"/>
+  <rect x="0" y="0" width="680" height="680" rx="148" fill="url(#glow)"/>
+  <rect x="0" y="0" width="680" height="680" rx="148" fill="none" stroke="#1d4ed8" stroke-width="1.5" stroke-opacity="0.15"/>
+  <path d="M 140 210 Q 140 158 192 158 L 488 158 Q 540 158 540 210 L 540 420 Q 540 472 488 472 L 300 472 L 248 548 L 248 472 L 192 472 Q 140 472 140 420 Z" fill="#1c2340" fill-opacity="0.72"/>
+  <path d="M 140 210 Q 140 158 192 158 L 488 158 Q 540 158 540 210 L 540 420 Q 540 472 488 472 L 300 472 L 248 548 L 248 472 L 192 472 Q 140 472 140 420 Z" fill="none" stroke="#2563FF" stroke-width="1.5" stroke-opacity="0.35"/>
+  <g clip-path="url(#bubble-clip)" opacity="0.07">
+    <line x1="140" y1="230" x2="540" y2="230" stroke="#ffffff" stroke-width="1"/>
+    <line x1="140" y1="272" x2="540" y2="272" stroke="#ffffff" stroke-width="1"/>
+    <line x1="140" y1="314" x2="540" y2="314" stroke="#ffffff" stroke-width="1"/>
+    <line x1="140" y1="356" x2="540" y2="356" stroke="#ffffff" stroke-width="1"/>
+    <line x1="140" y1="398" x2="540" y2="398" stroke="#ffffff" stroke-width="1"/>
+    <line x1="140" y1="440" x2="540" y2="440" stroke="#ffffff" stroke-width="1"/>
+  </g>
+  <path d="M 140 210 Q 140 158 192 158 L 488 158 Q 540 158 540 210 L 540 420 Q 540 472 488 472 L 300 472 L 248 548 L 248 472 L 192 472 Q 140 472 140 420 Z" fill="none" stroke="#8899bb" stroke-width="18" stroke-linejoin="round"/>
+  <circle cx="232" cy="308" r="22" fill="#8899bb"/>
+  <circle cx="340" cy="308" r="22" fill="#8899bb"/>
+  <circle cx="448" cy="308" r="22" fill="#8899bb"/>
+</svg>
